@@ -16,12 +16,27 @@ generateBtn.addEventListener('click', writePassword);
 
 
 //1 Prompt User:
-//1.1 prompt("Please Select length of password between 8 -128 characters")
-//1.2 confirm("lowercase characters?")
-//1.3 confirm("uppercase characters?")
-//1.4 confirm("numbers?")
-//1.5 confirm("symbols?")
 
+function userPrompts() {
+    let userLength = null;
+
+    //1.1 prompt("Please Select length of password between 8 -128 characters")
+    let userLength = prompt("Please Select length of password between 8 -128 characters");
+
+    //1.2 confirm("lowercase characters?")
+    let userLowercase = confirm("lowercase characters?");
+
+    //1.3 confirm("uppercase characters?")
+    let userUppercase = confirm("uppercase characters?");
+
+    //1.4 confirm("numbers?")
+    let userNumber = confirm("numbers?")
+
+    //1.5 confirm("symbols?")
+    let userSymbols = confirm("symbols?");
+
+
+}
 //2 Create array and check user inputs:
 // Length: numbers
 // lower:  T/F
