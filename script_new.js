@@ -3,7 +3,7 @@ let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-
+    userPrompts();
     let password = generatePassword();
     let passwordText = document.querySelector('#password');
 
@@ -16,22 +16,40 @@ generateBtn.addEventListener('click', writePassword);
 
 
 //1 Prompt User:
-let userLength = null;
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const generateEl = document.getElementById('generate');
 
-function userPrompts() {
+
+const randomFunc = {
+    lower: getLowercase,
+    upper: getUppercase,
+    number: getRandomNumber,
+    symbol: getRandomSymbol
+};
+
+
+
+function generatePassword() {
 
 
     //1.1 prompt("Please Select length of password between 8 -128 characters")
     let userLength = Number(prompt("Please Select length of password between 8 -128 characters"));
-
+    console.log(userLength);
     //1.2 confirm("lowercase characters?")
     let userLowercase = confirm("lowercase characters?");
+    console.log('Use Lowercase?: ' + userLowercase);
 
     //1.3 confirm("uppercase characters?")
     let userUppercase = confirm("uppercase characters?");
+    console.log('Use Uppercase?: ' + userUppercase);
 
     //1.4 confirm("numbers?")
     let userNumber = confirm("numbers?")
+    console.log('Use Numbers?: ' + userNumber);
 
     //1.5 confirm("symbols?")
     let userSymbols = confirm("symbols?");
@@ -44,10 +62,12 @@ function userPrompts() {
     // Num:    T/F
     // Symbol: T/F
 
+
+
+
     let userInputs = [userLength, userLowercase, userUppercase, userNumber, userSymbols];
     console.log(userInputs);
-
-
+    return userInputs;
 
 }
 
@@ -93,8 +113,8 @@ function getRandomNumber() {
 }
 console.log(getRandomNumber());
 
-function getRandomSpecial() {
+function getRandomSymbol() {
     const special = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '=', '/', '.'];
     return special[Math.floor(Math.random() * special.length)];
 }
-console.log(getRandomSpecial());
+console.log(getRandomSymbol());
