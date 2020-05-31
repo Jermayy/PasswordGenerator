@@ -3,7 +3,7 @@ let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-    userPrompts();
+    userPrompt();
     let password = generatePassword();
     let passwordText = document.querySelector('#password');
 
@@ -16,12 +16,13 @@ generateBtn.addEventListener('click', writePassword);
 
 
 //1 Prompt User:
-const resultEl = document.getElementById('result');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const generateEl = document.getElementById('generate');
+let resultEl = document.getElementById('result');
+let lengthEl = document.getElementById('length');
+let uppercaseEl = document.getElementById('uppercase');
+let lowercaseEl = document.getElementById('lowercase');
+let numbersEl = document.getElementById('numbers');
+let symbolsEl = document.getElementById('symbols');
+let generateEl = document.getElementById('generate');
 
 
 const randomFunc = {
@@ -33,7 +34,7 @@ const randomFunc = {
 
 
 
-function generatePassword() {
+function userPrompt() {
 
 
     //1.1 prompt("Please Select length of password between 8 -128 characters")
@@ -62,14 +63,33 @@ function generatePassword() {
     // Num:    T/F
     // Symbol: T/F
 
+    lengthEl = userLength;
+    lowercaseEl = userLowercase;
+    uppercaseEl = userUppercase;
+    numbersEl = userNumber;
+    symbolsEl = userSymbols;
+
+    console.log(userLength, userLowercase, userUppercase, userNumber, userSymbols);
+
+    resultEl.innerText = generatePassword(userLength, userLowercase, userUppercase, userNumber, userSymbols);
 
 
 
-    let userInputs = [userLength, userLowercase, userUppercase, userNumber, userSymbols];
-    console.log(userInputs);
-    return userInputs;
+    // let userInputs = [userLength, userLowercase, userUppercase, userNumber, userSymbols];
+    // console.log(userInputs);
+    // return userInputs;
 
 }
+
+
+generatePassword(userLength, userLowercase, userUppercase, userNumber, userSymbols) {
+    //1. create password variable
+    //2. filter False types
+    //3. Loop over declared length
+    //4. Add final password back to variable and return
+}
+
+
 
 
 
