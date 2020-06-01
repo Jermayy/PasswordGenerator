@@ -25,7 +25,7 @@ let symbolsEl = document.getElementById('symbols');
 let generateEl = document.getElementById('generate');
 
 
-const randomFunc = {
+let randomFunc = {
     lower: getLowercase,
     upper: getUppercase,
     number: getRandomNumber,
@@ -82,10 +82,39 @@ function userPrompt() {
 }
 
 
-generatePassword(userLength, userLowercase, userUppercase, userNumber, userSymbols) {
+function generatePassword(lower, upper, number, symbol, length) {
     //1. create password variable
+
+    let generatedPassword = '';
+
+    const typesCount = lower + upper + number + symbol;
+
+    console.log("typesCount: ", typesCount);
+
+
     //2. filter False types
+
+    const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0]);
+
+    console.log('typesArr: ', typesArr);
+
     //3. Loop over declared length
+
+    if (typesCount === 0) {
+        return "";
+    }
+
+    for (let i = 0; i < length; i += typesCount) {
+        typesArr.forEach(types => {
+            const funcName = Object.keys(types)[0];
+            console.log('funcName: ', funcName);
+
+            generatedPassword += randomFunc[funcName]();
+        })
+
+    }
+
+
     //4. Add final password back to variable and return
 }
 
