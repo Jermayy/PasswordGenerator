@@ -109,11 +109,13 @@ function generatePassword(lower, upper, number, symbol, length) {
             const funcName = Object.keys(types)[0];
             console.log('funcName: ', funcName);
 
-            const finalPassword = generatedPassword += randomFunc[funcName]();
+            generatedPassword += randomFunc[funcName]();
         });
 
         console.log(generatedPassword);
 
+        const finalPassword = generatedPassword;
+        return finalPassword;
 
     }
 
