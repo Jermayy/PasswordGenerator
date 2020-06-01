@@ -16,16 +16,16 @@ generateBtn.addEventListener('click', writePassword);
 
 
 //1 Prompt User:
-let resultEl = document.getElementById('result');
-let lengthEl = document.getElementById('length');
-let uppercaseEl = document.getElementById('uppercase');
-let lowercaseEl = document.getElementById('lowercase');
-let numbersEl = document.getElementById('numbers');
-let symbolsEl = document.getElementById('symbols');
-let generateEl = document.getElementById('generate');
+const password = document.getElementById('password');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
 
 
-let randomFunc = {
+const randomFunc = {
     lower: getLowercase,
     upper: getUppercase,
     number: getRandomNumber,
@@ -54,7 +54,7 @@ function userPrompt() {
 
     //1.5 confirm("symbols?")
     let userSymbols = confirm("symbols?");
-
+    console.log('Use Symbols?: ' + userNumber);
 
     //2 Create array and check user inputs:
     // Length: numbers
@@ -63,15 +63,15 @@ function userPrompt() {
     // Num:    T/F
     // Symbol: T/F
 
-    lengthEl = userLength;
-    lowercaseEl = userLowercase;
-    uppercaseEl = userUppercase;
-    numbersEl = userNumber;
-    symbolsEl = userSymbols;
+    const lengthEl = userLength;
+    const lowercaseEl = userLowercase;
+    const uppercaseEl = userUppercase;
+    const numbersEl = userNumber;
+    const symbolsEl = userSymbols;
 
     console.log(userLength, userLowercase, userUppercase, userNumber, userSymbols);
 
-    resultEl.innerText = generatePassword(userLength, userLowercase, userUppercase, userNumber, userSymbols);
+    password.innerText = generatePassword(lowercaseEl, uppercaseEl, numbersEl, symbolsEl, lengthEl);
 
 
 
@@ -109,8 +109,11 @@ function generatePassword(lower, upper, number, symbol, length) {
             const funcName = Object.keys(types)[0];
             console.log('funcName: ', funcName);
 
-            generatedPassword += randomFunc[funcName]();
-        })
+            const finalPassword = generatedPassword += randomFunc[funcName]();
+        });
+
+        console.log(generatedPassword);
+
 
     }
 
