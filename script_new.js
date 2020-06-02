@@ -1,14 +1,10 @@
 // Assignment Code
 let generateBtn = document.querySelector('#generate');
-
+let passwordText = document.querySelector('#password');
 // Write password to the #password input
 function writePassword() {
     userPrompt();
     let password = generatePassword();
-    let passwordText = document.querySelector('#password');
-
-
-    passwordText.value = password;
 }
 
 // Add event listener to generate button
@@ -16,13 +12,13 @@ generateBtn.addEventListener('click', writePassword);
 
 
 //1 Prompt User:
-const password = document.getElementById('password');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const symbolsEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
+// const resultEl = document.getElementById('password');
+// const lengthEl = document.getElementById('length');
+// const uppercaseEl = document.getElementById('uppercase');
+// const lowercaseEl = document.getElementById('lowercase');
+// const numbersEl = document.getElementById('numbers');
+// const symbolsEl = document.getElementById('symbols');
+// const generateEl = document.getElementById('generate');
 
 
 const randomFunc = {
@@ -57,11 +53,6 @@ function userPrompt() {
     console.log('Use Symbols?: ' + userNumber);
 
     //2 Create array and check user inputs:
-    // Length: numbers
-    // lower:  T/F
-    // upper:  T/F
-    // Num:    T/F
-    // Symbol: T/F
 
     const lengthEl = userLength;
     const lowercaseEl = userLowercase;
@@ -71,7 +62,7 @@ function userPrompt() {
 
     console.log(userLength, userLowercase, userUppercase, userNumber, userSymbols);
 
-    password.innerText = generatePassword(lowercaseEl, uppercaseEl, numbersEl, symbolsEl, lengthEl);
+    passwordText.value = generatePassword(lowercaseEl, uppercaseEl, numbersEl, symbolsEl, lengthEl);
 
 
 
@@ -86,16 +77,13 @@ function generatePassword(lower, upper, number, symbol, length) {
     //1. create password variable
 
     let generatedPassword = '';
-
     const typesCount = lower + upper + number + symbol;
-
     console.log("typesCount: ", typesCount);
 
 
     //2. filter False types
 
     const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0]);
-
     console.log('typesArr: ', typesArr);
 
     //3. Loop over declared length
