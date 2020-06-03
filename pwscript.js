@@ -16,6 +16,38 @@ generateBtn.addEventListener('click', writePassword);
 
 // Create series of options that allow user to generate password when press 'Generate Password Button'
 
+function generatePassword() {
+    console.log("I work!");
+
+    const charLength = Number(prompt("select password length between 8 - 128 characters"));
+
+    if (charLength >= 8 && charLength <= 128) {
+
+        const LowercaseChar = confirm("Use lowercase characters?");
+        const uppercaseChar = confirm("Use uppercase characters?");
+        const numericalChar = confirm("Use numerical characters?");
+        const specialChar = confirm("Use Special characters?");
+
+
+
+
+
+
+
+    } else {
+        alert("Password length must be between 8 - 128 characters!");
+    };
+
+
+
+
+
+
+
+
+};
+
+
 //Options:
 //Length of Password
 //lowercase
