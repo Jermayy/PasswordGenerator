@@ -49,10 +49,10 @@ function generatePassword() {
         const specialChar = confirm("Use Special characters?");
         const typesArr = [lowercaseChar, uppercaseChar, numericalChar, specialChar];
 
-        console.log(typesArr);
+        console.log(typesArr)
 
 
-        typesArr.forEach(element => {
+        typesArr.forEach(typesArr => {
             for (let i = generatedPassword.length; generatedPassword.length < charLength; i++) {
 
                 if (lowercaseChar === true) {
@@ -65,10 +65,12 @@ function generatePassword() {
                     console.log(generatedPassword)
                 };
 
-                if (uppercaseChar === true) {
+                if (numericalChar === true) {
                     generatedPassword += getRandomNumber();
                     console.log(generatedPassword);
                 };
+
+
 
                 if (specialChar === true) {
                     generatedPassword += getRandomSymbol();
