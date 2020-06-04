@@ -15,5 +15,6 @@ This exercise required us to demonstrate our knowledge of Javascript and create 
 
 Deployed application URL: https://jermayy.github.io/PasswordGenerator/
 
+![](/screenshots/initialScreen.png)
 
 
