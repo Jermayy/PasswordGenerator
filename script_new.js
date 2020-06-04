@@ -86,7 +86,7 @@ function generatePassword(lower, upper, number, symbol, lengthEl) {
         return "";
     }
 
-    for (let i = 0; i < lengthEl; i += typesCount) {
+    for (let i = 0; i <= lengthEl; i += typesCount) {
         typesArr.forEach(types => {
             const funcName = Object.keys(types)[0];
             console.log('funcName: ', funcName);

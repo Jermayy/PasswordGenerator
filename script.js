@@ -3,6 +3,7 @@ let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+    
     let password = generatePassword();
     let passwordText = document.querySelector('#password');
 
@@ -12,15 +13,26 @@ function writePassword() {
     // 2. Browser prompts user charactor types:
 
     // 2.2 Prompt inputs "Select length of password" (8-128 characters)
+    let Length = null;
+
+
     function generatePassword() {
-        let userLength = prompt("Select length of password (8 - 128 Characters)");
+        let Length = Number(prompt("Select length of password (8 - 128 Characters)"));
+
+        if (Length === Number && Length >= 8 && Length <= 128) {
+            let userLength = Length;
+        } else {
+            alert("invalid password length");
+            length = null;
+        };
+
         let userLowercase = confirm("Use Lowercase characters?");
         let userUppercase = confirm("Use Uppercase characters?");
         let userNumber = confirm("Use Numbers?");
         let userSpecial = confirm("Use Special Characters?");
 
-
-
+        let validityCheck = [userLength, userLowercase, userUppercase, userNumber, userSpecial];
+        console.log(validityCheck);
 
 
     }
@@ -69,21 +81,23 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN prompted for character types to include in the password
-// THEN I choose lowercase, uppercase, numeric, and special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const generateEl = document.getElementById('generate');
+
+
+
+
+const randomFunc = {
+    lower: getLowercase,
+    upper: getUppercase,
+    number: getRandomNumber,
+    special: getRandomSpecial
+};
+
 
 function getLowercase() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
